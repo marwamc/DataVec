@@ -14,7 +14,8 @@
   ~  *    limitations under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -75,21 +76,20 @@
     </prerequisites>
 
 
-	<distributionManagement>
-            <repository>
-                    <id>bintray-deeplearning4j-maven</id>
-                    <name>Deeplearning4j-maven</name>
-					<url>https://api.bintray.com/maven/deeplearning4j/maven/${project.artifactId}/;publish=1</url>
-                </repository>
-				 <snapshotRepository>
-					<id>snapshots</id>
-					<name>local-snapshots</name>
-					<url>http://localhost:8081/artifactory/libs-snapshot-local</url>
-				</snapshotRepository>
-        </distributionManagement>
+    <distributionManagement>
+        <repository>
+            <id>bintray-deeplearning4j-maven</id>
+            <name>Deeplearning4j-maven</name>
+            <url>${BINTRAY_MAVEN}/${project.artifactId}/;publish=1</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>local-snapshots</name>
+            <url>${ARTFACT_URL}/${ARTFACT_SNAPSHOT}</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 
-	
     <profiles>
         <profile>
             <id>qa</id>
@@ -235,7 +235,7 @@
                     <configuration>
                         <mavenExecutorId>forked-path</mavenExecutorId>
                         <!-- To deploy to an open staging repository: -Darguments=-DstagingRepositoryId=orgnd4j-xxxx -->
-                        <arguments> -Psonatype-oss-release -DskipTests ${arguments}</arguments>
+                        <arguments>-Psonatype-oss-release -DskipTests ${arguments}</arguments>
                         <localCheckout>true</localCheckout>
                         <pushChanges>false</pushChanges>
                     </configuration>
@@ -302,11 +302,11 @@
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>${maven-deploy-plugin.version}</version>
-<!--
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
--->
+                <!--
+                                <configuration>
+                                    <skip>true</skip>
+                                </configuration>
+                -->
             </plugin>
             <!-- <plugin>
                 <groupId>org.sonatype.plugins</groupId>
@@ -338,29 +338,29 @@
                 <artifactId>maven-surefire-plugin</artifactId>
             </plugin>
             <plugin>
-              <groupId>com.lewisd</groupId>
-              <artifactId>lint-maven-plugin</artifactId>
-              <version>0.0.11</version>
-              <configuration>
-                <failOnViolation>true</failOnViolation>
-                <onlyRunRules>
-                  <rule>DuplicateDep</rule>
-                  <rule>RedundantDepVersion</rule>
-                  <rule>RedundantPluginVersion</rule>
-                  <rule>VersionProp</rule>
-                  <rule>DotVersionProperty</rule>
-                </onlyRunRules>
-                <xmlOutputFile>${project.build.directory}/maven-lint-result.xml</xmlOutputFile>
-              </configuration>
-              <executions>
-                <execution>
-                  <id>pom-lint</id>
-                  <phase>validate</phase>
-                  <goals>
-                    <goal>check</goal>
-                  </goals>
-                </execution>
-              </executions>
+                <groupId>com.lewisd</groupId>
+                <artifactId>lint-maven-plugin</artifactId>
+                <version>0.0.11</version>
+                <configuration>
+                    <failOnViolation>true</failOnViolation>
+                    <onlyRunRules>
+                        <rule>DuplicateDep</rule>
+                        <rule>RedundantDepVersion</rule>
+                        <rule>RedundantPluginVersion</rule>
+                        <rule>VersionProp</rule>
+                        <rule>DotVersionProperty</rule>
+                    </onlyRunRules>
+                    <xmlOutputFile>${project.build.directory}/maven-lint-result.xml</xmlOutputFile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>pom-lint</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
         </plugins>
