@@ -23,7 +23,7 @@
 
     <packaging>pom</packaging>
 
-    <version>0.7.2</version>
+    <version>0.7.2-SNAPSHOT</version>
     <modules>
         <module>datavec-api</module>
         <module>datavec-data</module>
