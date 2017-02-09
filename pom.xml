@@ -335,6 +335,7 @@
                     <serverId>local-nexus</serverId>
                     <nexusUrl>${NEXUS_URL}</nexusUrl>
                     <!--<skipStagingRepositoryClose>true</skipStagingRepositoryClose>-->
+                    <stagingProfileId>11537a3f5fa97</stagingProfileId>
                 </configuration>
             </plugin>
             <plugin>
