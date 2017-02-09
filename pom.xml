@@ -90,6 +90,24 @@
 
     <profiles>
         <profile>
+            <id>scala2.10</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <scalaClassifier>2.10</scalaClassifier>
+            </properties>
+        </profile>
+        <profile>
+            <id>scala2.11</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <scalaClassifier>2.11</scalaClassifier>
+            </properties>
+        </profile>
+        <profile>
             <id>qa</id>
             <build>
                 <plugins>
