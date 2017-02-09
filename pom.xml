@@ -83,48 +83,48 @@
     </distributionManagement>
 
 
-    <profiles>
-        <profile>
-            <id>scala2.10</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <scalaClassifier>2.10</scalaClassifier>
-                <scalaClassifierVersion>2.10.6</scalaClassifierVersion>
-            </properties>
-        </profile>
-        <profile>
-            <id>scala2.11</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <properties>
-                <scalaClassifier>2.11</scalaClassifier>
-                <scalaClassifierVersion>2.11.7</scalaClassifierVersion>
-            </properties>
-        </profile>
+    <profile>
+        <id>cuda7.5</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+        <properties>
+            <cudaClassifier>7.5</cudaClassifier>
+        </properties>
+    </profile>
+    <profile>
+        <id>cuda8.0</id>
+        <activation>
+            <activeByDefault>false</activeByDefault>
+        </activation>
+        <properties>
+            <cudaClassifier>8.0</cudaClassifier>
+        </properties>
+    </profile>
 
-        <profile>
-            <id>cuda7.5</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <cudaClassifier>7.5</cudaClassifier>
-            </properties>
-        </profile>
-        <profile>
-            <id>cuda8.0</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <properties>
-                <cudaClassifier>8.0</cudaClassifier>
-            </properties>
-        </profile>
+    <profile>
+        <id>scala2.10</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+        <properties>
+            <scalaClassifier>2.10</scalaClassifier>
+            <scalaClassifier.version>2.10.6</scalaClassifier.version>
+        </properties>
+    </profile>
+    <profile>
+        <id>scala2.11</id>
+        <activation>
+            <activeByDefault>false</activeByDefault>
+        </activation>
+        <properties>
+            <scalaClassifier>2.11</scalaClassifier>
+            <scalaClassifier.version>2.11.7</scalaClassifier.version>
+        </properties>
+    </profile>
 
-        <profile>
+
+    <profile>
             <id>qa</id>
             <build>
                 <plugins>
@@ -307,7 +307,7 @@
                 <artifactId>scala-maven-plugin</artifactId>
                 <version>3.2.2</version>
                 <configuration>
-                    <scalaVersion>${scalaClassifierVersion}</scalaVersion>
+                    <scalaVersion>${scalaClassifier.version}</scalaVersion>
                     <args>
                         <arg>-deprecation</arg>
                         <arg>-explaintypes</arg>
