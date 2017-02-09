@@ -14,7 +14,8 @@
   ~  *    limitations under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -83,48 +84,49 @@
     </distributionManagement>
 
 
-    <profile>
-        <id>cuda7.5</id>
-        <activation>
-            <activeByDefault>true</activeByDefault>
-        </activation>
-        <properties>
-            <cudaClassifier>7.5</cudaClassifier>
-        </properties>
-    </profile>
-    <profile>
-        <id>cuda8.0</id>
-        <activation>
-            <activeByDefault>false</activeByDefault>
-        </activation>
-        <properties>
-            <cudaClassifier>8.0</cudaClassifier>
-        </properties>
-    </profile>
+    <profiles>
+        <profile>
+            <id>cuda7.5</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <cudaClassifier>7.5</cudaClassifier>
+            </properties>
+        </profile>
+        <profile>
+            <id>cuda8.0</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <cudaClassifier>8.0</cudaClassifier>
+            </properties>
+        </profile>
 
-    <profile>
-        <id>scala2.10</id>
-        <activation>
-            <activeByDefault>true</activeByDefault>
-        </activation>
-        <properties>
-            <scalaClassifier>2.10</scalaClassifier>
-            <scalaClassifier.version>2.10.6</scalaClassifier.version>
-        </properties>
-    </profile>
-    <profile>
-        <id>scala2.11</id>
-        <activation>
-            <activeByDefault>false</activeByDefault>
-        </activation>
-        <properties>
-            <scalaClassifier>2.11</scalaClassifier>
-            <scalaClassifier.version>2.11.7</scalaClassifier.version>
-        </properties>
-    </profile>
+        <profile>
+            <id>scala2.10</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <scalaClassifier>2.10</scalaClassifier>
+                <scalaClassifier.version>2.10.6</scalaClassifier.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>scala2.11</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <scalaClassifier>2.11</scalaClassifier>
+                <scalaClassifier.version>2.11.7</scalaClassifier.version>
+            </properties>
+        </profile>
 
 
-    <profile>
+        <profile>
             <id>qa</id>
             <build>
                 <plugins>
@@ -268,7 +270,7 @@
                     <configuration>
                         <mavenExecutorId>forked-path</mavenExecutorId>
                         <!-- To deploy to an open staging repository: -Darguments=-DstagingRepositoryId=orgnd4j-xxxx -->
-                        <arguments> -Psonatype-oss-release -DskipTests ${arguments}</arguments>
+                        <arguments>-Psonatype-oss-release -DskipTests ${arguments}</arguments>
                         <localCheckout>true</localCheckout>
                         <pushChanges>false</pushChanges>
                     </configuration>
@@ -370,29 +372,29 @@
                 <artifactId>maven-surefire-plugin</artifactId>
             </plugin>
             <plugin>
-              <groupId>com.lewisd</groupId>
-              <artifactId>lint-maven-plugin</artifactId>
-              <version>0.0.11</version>
-              <configuration>
-                <failOnViolation>true</failOnViolation>
-                <onlyRunRules>
-                  <rule>DuplicateDep</rule>
-                  <rule>RedundantDepVersion</rule>
-                  <rule>RedundantPluginVersion</rule>
-                  <rule>VersionProp</rule>
-                  <rule>DotVersionProperty</rule>
-                </onlyRunRules>
-                <xmlOutputFile>${project.build.directory}/maven-lint-result.xml</xmlOutputFile>
-              </configuration>
-              <executions>
-                <execution>
-                  <id>pom-lint</id>
-                  <phase>validate</phase>
-                  <goals>
-                    <goal>check</goal>
-                  </goals>
-                </execution>
-              </executions>
+                <groupId>com.lewisd</groupId>
+                <artifactId>lint-maven-plugin</artifactId>
+                <version>0.0.11</version>
+                <configuration>
+                    <failOnViolation>true</failOnViolation>
+                    <onlyRunRules>
+                        <rule>DuplicateDep</rule>
+                        <rule>RedundantDepVersion</rule>
+                        <rule>RedundantPluginVersion</rule>
+                        <rule>VersionProp</rule>
+                        <rule>DotVersionProperty</rule>
+                    </onlyRunRules>
+                    <xmlOutputFile>${project.build.directory}/maven-lint-result.xml</xmlOutputFile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>pom-lint</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
         </plugins>
