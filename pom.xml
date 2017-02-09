@@ -91,6 +91,7 @@
             </activation>
             <properties>
                 <scalaClassifier>2.10</scalaClassifier>
+                <scalaClassifierVersion>2.10.6</scalaClassifierVersion>
             </properties>
         </profile>
         <profile>
@@ -100,8 +101,29 @@
             </activation>
             <properties>
                 <scalaClassifier>2.11</scalaClassifier>
+                <scalaClassifierVersion>2.11.7</scalaClassifierVersion>
             </properties>
         </profile>
+
+        <profile>
+            <id>cuda7.5</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <cudaClassifier>7.5</cudaClassifier>
+            </properties>
+        </profile>
+        <profile>
+            <id>cuda8.0</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <cudaClassifier>8.0</cudaClassifier>
+            </properties>
+        </profile>
+
         <profile>
             <id>qa</id>
             <build>
