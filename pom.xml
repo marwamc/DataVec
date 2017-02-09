@@ -332,7 +332,7 @@
                 </executions>
                 <extensions>true</extensions>
                 <configuration>
-                    <serverId>nexus-releases</serverId>
+                    <serverId>local-nexus</serverId>
                     <nexusUrl>${NEXUS_URL}</nexusUrl>
                     <!--<skipStagingRepositoryClose>true</skipStagingRepositoryClose>-->
                 </configuration>
